@@ -1,21 +1,23 @@
 
-import openai
 import streamlit as st
 import os
+from openai import OpenAI
 
-# 读取 OpenAI API 密钥（从环境变量中）
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-st.set_page_config(page_title="ChatGPT Web 聊天", layout="wide")
+st.set_page_config(page_title="ChatGPT GPT-4o 聊天助手", layout="wide")
 st.title("🤖 ChatGPT GPT-4o 聊天助手")
 
+# 聊天记录初始化
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "system", "content": "你是一个智能聊天助手"}]
+    st.session_state.messages = [{"role": "system", "content": "你是一个友好而聪明的聊天助手"}]
 
+# 显示对话历史
 for msg in st.session_state.messages:
     if msg["role"] != "system":
         st.chat_message(msg["role"]).markdown(msg["content"])
 
+# 用户输入
 user_input = st.chat_input("请输入你的问题...")
 
 if user_input:
@@ -23,7 +25,7 @@ if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4o",
             messages=st.session_state.messages
         )
