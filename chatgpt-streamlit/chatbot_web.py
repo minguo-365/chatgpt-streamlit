@@ -4,7 +4,7 @@ import os
 from openai import OpenAI
 
 # 页面配置
-st.set_page_config(page_title="ChatGPT GPT-4o 聊天助手", layout="wide")
+st.set_page_config(page_title="Wertgarantie Chatbot", layout="wide")
 
 # 插入公司 Logo
 st.image("https://raw.githubusercontent.com/你的用户名/你的仓库名/main/wertgarantie_logo.png", width=160)
@@ -12,8 +12,7 @@ st.image("https://raw.githubusercontent.com/你的用户名/你的仓库名/main
 # 欢迎话
 st.markdown("""
 <div style='text-align: center; margin-top: -30px;'>
-    <h1>🤖 欢迎使用 ChatGPT GPT-4o 聊天助手</h1>
-    <p style='font-size:18px;'>由 <strong>WERTGARANTIE</strong> 提供技术支持，支持中文 ⛄ 和德语 🇩🇪</p>
+    <h1>🤖 Willkommen</h1>
 </div>
 """, unsafe_allow_html=True)
 
